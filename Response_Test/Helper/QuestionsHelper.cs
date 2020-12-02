@@ -7,7 +7,25 @@ namespace Response_Test.Helper
 {
     public class QuestionsHelper
     {
-        public List<string> Result()
+        public List<string> Result(string category)
+        {
+            List<string> result = new List<string>();
+            if (category == "Nature")
+            {
+                result.AddRange(Nature());
+            }
+            else if (category == "Artificial")
+            {
+                result.AddRange(Artificial());
+            }
+            else
+            {
+                result.AddRange(Color());
+            }
+            return result;
+        }
+
+        public List<string> ResultAll()
         {
             List<string> result = new List<string>();
             result.AddRange(Nature());
@@ -15,6 +33,7 @@ namespace Response_Test.Helper
             result.AddRange(Color());
             return result;
         }
+
         private List<string> Nature()
         {
             List<string> nature = new List<string>
@@ -24,7 +43,7 @@ namespace Response_Test.Helper
             return nature;
         }
 
-        private void  Personal()
+        private void Personal()
         {
         }
 

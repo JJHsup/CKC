@@ -278,7 +278,6 @@ C:\Users\PC\Desktop\CKC\Response_Test\bin\zh-Hant\System.Web.Razor.resources.dll
 C:\Users\PC\Desktop\CKC\Response_Test\bin\zh-Hant\System.Web.WebPages.resources.dll
 C:\Users\PC\Desktop\CKC\Response_Test\bin\zh-Hant\System.Web.WebPages.Deployment.resources.dll
 C:\Users\PC\Desktop\CKC\Response_Test\bin\zh-Hant\System.Web.WebPages.Razor.resources.dll
-C:\Users\PC\Desktop\CKC\Response_Test\obj\Debug\Response_Test.csprojAssemblyReference.cache
 C:\Users\PC\Desktop\CKC\Response_Test\obj\Debug\Response_Test.csproj.CoreCompileInputs.cache
 C:\Users\PC\Desktop\CKC\Response_Test\obj\Debug\Response_Test.csproj.CopyComplete
 C:\Users\PC\Desktop\CKC\Response_Test\obj\Debug\Response_Test.dll
