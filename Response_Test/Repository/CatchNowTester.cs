@@ -9,9 +9,10 @@ namespace Response_Test.Repository
     public class CatchNowTester
     {
         private readonly Response_TestContext db = new Response_TestContext();
+
         public string Name()
         {
-            string result = db.TesterInfomationModels.OrderBy(x => x.Login).FirstOrDefault().TesterName;
+            string result = db.TesterInfomationModels.OrderByDescending(x => x.Login).FirstOrDefault().TesterName;
             return result;
         }
     }

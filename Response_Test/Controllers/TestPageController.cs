@@ -23,7 +23,7 @@ namespace Response_Test.Controllers
                 TesterBuildRepository build = new TesterBuildRepository();
                 build.BuildTester(tester);
             }
-            return View();
+            return View("FirstTest");
         }
 
         public ActionResult FirstTest()

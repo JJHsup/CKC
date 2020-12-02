@@ -7,13 +7,13 @@ namespace Response_Test.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class New : IMigrationMetadata
+    public sealed partial class BuildDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(New));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(BuildDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "202012020741301_New"; }
+            get { return "202012021426142_BuildDB"; }
         }
         
         string IMigrationMetadata.Source
