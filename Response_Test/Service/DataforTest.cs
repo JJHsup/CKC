@@ -34,7 +34,7 @@ namespace Response_Test.Service
                         itemmodel = new QuestionsModel
                         {
                             Main = item,
-                            KeybordCode = "65"
+                            KeybordCode = "76"
                         };
                         result.Add(itemmodel);
                     }
@@ -43,7 +43,7 @@ namespace Response_Test.Service
                         itemmodel = new QuestionsModel
                         {
                             Main = item,
-                            KeybordCode = "76"
+                            KeybordCode = "65"
                         };
                         result.Add(itemmodel);
                     }
@@ -52,7 +52,7 @@ namespace Response_Test.Service
                         itemmodel = new QuestionsModel
                         {
                             Main = item,
-                            KeybordCode = "76"
+                            KeybordCode = "65"
                         };
                         result.Add(itemmodel);
                     }
@@ -61,7 +61,7 @@ namespace Response_Test.Service
                         itemmodel = new QuestionsModel
                         {
                             Main = item,
-                            KeybordCode = "65"
+                            KeybordCode = "76"
                         };
                         result.Add(itemmodel);
                     }

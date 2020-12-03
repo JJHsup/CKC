@@ -15,6 +15,7 @@
             </div>
             <div class="center-box d-flex col-5 justify-content-center">
                 <div class="textbox">
+                    <div class="d-none text-danger" id="danger">X</div>
                     <p>選擇看到的詞彙為何者歸類</p><hr />
                     <p>若是為<strong>人造、顏色</strong>請按<strong>A</strong></p><hr />
                     <p>若是為<strong>自然、自己</strong>請按<strong>L</strong></p><hr />
@@ -31,37 +32,49 @@
 
 @section JS{
     <script>
-        document.addEventListener("keydown", KeybordSelect);
+        document.addEventListener("keydown", OK);
+        var jsonitem;
         var json = $.ajax({
             type: "Get",
             url: "../api/Test/TestOne",
-            dataType: "json"
+            dataType: "json",
+            success: OK ,
+            error: function () {
+                alert("error!!!!");
+            }            
         });
+        function OK() {
+            jsonitem = JSON.parse(json.responseText);
+            KeybordSelect();
+        }
         var ans = [];
+        var spacecontroller = true;
+        var questionitem = 0;
         function KeybordSelect() {
             var keybordnumber = event.keyCode;
-            if (keybordnumber != 32) {
-                alert("請先按空白建!!!");
-            } else {
-                ans.push(Date.now());
-                var p = document.querySelectorAll(".textbox p");
+            var p = document.querySelectorAll(".textbox p");
+            var x = document.getElementById('danger');
+            var time = new Date();
+            if (spacecontroller && keybordnumber == 32) {
+                ans.push(time.getTime());
                 for (var i = 0; i < p.length; i++) {
                     p[i].style.display = "none";
                 }
-                var item = JSON.parse(json.responseText);
+                spacecontroller = false;
                 p[1].style.display = "block";
-
-                for (var i = 0; i < p.length; i++) {
-                    p[1].innerHTML = "<h1>" + item[i].Main + "</h1>";
-                    if (keybordnumber === item[i].Keybordnumber) {
-                        ans.push(Date.now());
-                    } else {
-                        i--;
-                    }
-                }
+                p[1].innerHTML = "<h1>" + jsonitem[questionitem].Main + "</h1>";
+            } else if (spacecontroller && keybordnumber != 32) {
+                alert("請先按空白建!!!");
+            } else if (keybordnumber == jsonitem[questionitem].KeybordCode) {
+                x.style.display = "none";
+                questionitem += 1;
+                p[1].innerHTML = "<h1>" + jsonitem[questionitem].Main + "</h1>";
+                ans.push(time.getTime());
+            } else {
+                x.style.display = "block";
             }
         }
-        document.onkeydown = KeybordSelect;
+        document.onkeydown = OK;
     </script>
 }
 
