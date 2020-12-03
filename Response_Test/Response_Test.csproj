@@ -139,7 +139,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\API\DataManagerController.cs" />
     <Compile Include="Controllers\API\TestController.cs" />
+    <Compile Include="Controllers\API\TesterController.cs" />
     <Compile Include="Controllers\TesterInfomationModelsController.cs" />
     <Compile Include="Controllers\TestPageController.cs" />
     <Compile Include="Data\Response_TestContext.cs" />

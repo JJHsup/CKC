@@ -34,20 +34,39 @@
     <script>
         document.addEventListener("keydown", OK);
         var jsonitem;
+        var name;
         var json = $.ajax({
             type: "Get",
             url: "../api/Test/TestOne",
             dataType: "json",
-            success: OK ,
+            success: OK,
             error: function () {
                 alert("error!!!!");
-            }            
+            }
         });
         function OK() {
             jsonitem = JSON.parse(json.responseText);
+            Tester();
             KeybordSelect();
         }
+        var namejson;
+        function Tester() {
+            namejson = $.ajax({
+                type: "Get",
+                url: "../api/Tester/TesterName",
+                dataType: "json",
+                success: parse,
+                error: function () {
+                    alert("error!!!!");
+                }
+            })
+        }
+        function parse() {
+            var item = JSON.parse(namejson.responseText);
+            name = item[0];
+        }
         var ans = [];
+        ans.push(name);
         var spacecontroller = true;
         var questionitem = 0;
         function KeybordSelect() {
