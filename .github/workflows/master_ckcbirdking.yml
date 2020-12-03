@@ -31,5 +31,5 @@ jobs:
       with:
         app-name: 'ckcbirdking'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_7c462c7676d446239243245aa0720303 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_c28e67fe589d41e6a68a438add330bd6 }}
         package: ${{env.DOTNET_ROOT}}/myapp 
