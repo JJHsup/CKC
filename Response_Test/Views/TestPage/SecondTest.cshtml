@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "FirstTest";
+    ViewBag.Title = "SecondTest";
 }
 
 @using (Html.BeginForm())
@@ -13,6 +13,7 @@
             </div>
             <div class="center-box d-flex col-5 justify-content-center">
                 <div class="textbox">
+                    <div class=" text-danger" id="danger">X</div>
                     <p>選擇看到的詞彙為何者歸類</p><hr />
                     <p>若是為<strong>人造、他人</strong>請按<strong>A</strong></p><hr />
                     <p>若是為<strong>自然、自己</strong>請按<strong>L</strong></p><hr />
@@ -26,9 +27,9 @@
         </div>
     </div>
 }
-<div class="hide">
-    <a href="~/TestPage/SecondTest" id="Changeview"></a>
-</div>
+@*<div class="hide">
+        <a href="~/TestPage/"></a>
+    </div>*@
 
 @section JS{
     <script>
@@ -64,7 +65,7 @@
             if (spacecontroller && keybordnumber == 32) {
                 if (questionitem == 0 && spacecontroller) {
                     ans.name = jsonitem[20].Main;
-                    ans.round = 1;
+                    ans.round = 2;
                 };
                 ans.data.push(time.getTime());
                 for (var i = 0; i < p.length; i++) {
@@ -75,7 +76,7 @@
                 p[1].innerHTML = "<h1>" + jsonitem[questionitem].Main + "</h1>";
             } else if (spacecontroller && keybordnumber != 32) {
                 alert("請先按空白建!!!");
-            } else if (keybordnumber == jsonitem[questionitem].KeybordCode && spacecontroller == false) {
+            } else if (keybordnumber == jsonitem[questionitem].KeybordCode) {
                 ans.data.push(time.getTime());
                 if (questionitem == 19) {
                     fetch('../api/DataManager/BuildData', {
@@ -108,15 +109,13 @@
                             twenty: ans.data[19],
                             twentyone: ans.data[20],
                         })
-                    }).then(function () {
-                        document.getElementById('Changeview').click();
-                    });
+                    }).then
                 } else {
                     questionitem += 1;
                     p[1].innerHTML = "<h1>" + jsonitem[questionitem].Main + "</h1>";
                 }
-            } else if (keybordnumber != jsonitem[questionitem].KeybordCode && spacecontroller == false && questionitem > 0) {
-                alert("X");
+            } else {
+                dangerx.style.display = "block";
             }
         }
         document.onkeydown = OK;

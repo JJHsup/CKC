@@ -67,6 +67,12 @@ namespace Response_Test.Service
                     }
                 }
             }
+            itemmodel = new QuestionsModel
+            {
+                Main = tester.Name(),
+                KeybordCode = "76"
+            };
+            result.Add(itemmodel);
             return result;
         }
     }

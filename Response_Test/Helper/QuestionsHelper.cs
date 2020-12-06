@@ -60,7 +60,7 @@ namespace Response_Test.Helper
         {
             List<string> color = new List<string>
             {
-                "Yellow" , "Black" , "Blue" , "Red" , "Green" , "Pink" , "White"
+                "小白" , "阿明" , "老王" , "三姑" , "阿姨" , "小新" , "野原新之助"
             };
             return color;
         }

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Response_Test.Models;
 using Response_Test.Repository;
+using Response_Test.Models.ViewModel;
 
 namespace Response_Test.Controllers
 {
@@ -23,10 +24,15 @@ namespace Response_Test.Controllers
                 TesterBuildRepository build = new TesterBuildRepository();
                 build.BuildTester(tester);
             }
-            return RedirectToAction("FirstTest", "TestPage" );
+            return RedirectToAction("FirstTest", "TestPage");
         }
 
         public ActionResult FirstTest()
+        {
+            return View();
+        }
+
+        public ActionResult SecondTest()
         {
             return View();
         }

@@ -13,7 +13,7 @@ namespace Response_Test.Controllers
 {
     public class TesterInfomationModelsController : Controller
     {
-        private Response_TestContext db = new Response_TestContext();
+        private readonly Response_TestContext db = new Response_TestContext();
 
         // GET: TesterInfomationModels
         public ActionResult Index()
