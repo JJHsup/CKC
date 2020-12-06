@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Response_Test",
+    "\\Response_Test\\Service"
   ],
-  "SelectedNode": "\\Response_Test.sln",
+  "SelectedNode": "\\packages",
   "PreviewInSolutionExplorer": false
 }

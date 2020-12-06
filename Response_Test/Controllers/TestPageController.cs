@@ -36,5 +36,30 @@ namespace Response_Test.Controllers
         {
             return View();
         }
+
+        public ActionResult ThirdTest()
+        {
+            return View();
+        }
+
+        public ActionResult FourthTest()
+        {
+            return View();
+        }
+
+        public ActionResult FifthTest()
+        {
+            return View();
+        }
+
+        public ActionResult SixFifthTest()
+        {
+            return View();
+        }
+
+        public ActionResult SeventhTest()
+        {
+            return View();
+        }
     }
 }

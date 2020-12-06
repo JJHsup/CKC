@@ -34,6 +34,7 @@
     <script>
 
         document.addEventListener("keydown", OK);
+        document.addEventListener("keyup", keyup);
         var jsonitem;
         var ans =
         {
@@ -52,74 +53,106 @@
         });
         var spacecontroller = true;
         var questionitem = 0;
+        var len = ans.data.length;
+        var time = new Date();
+        var now = Date.now();
+        var key = true;
+
+        function keyup() {
+            key = true;
+        }
+
+        function check(p) {
+            if (questionitem > 2) {
+                var checkitemone = ans.data[questionitem];
+                var checkitemtwo = ans.data[questionitem - 1];
+                if (checkitemone == checkitemtwo) {
+                    questionitem = questionitem - 1;
+                    ans.data.pop();
+                    p[1].innerHTML = "<h1>" + jsonitem[questionitem].Main + "</h1>";
+                }
+            }
+        }
+
+        function KeybordSelect() {
+            var keybordnumber = event.keyCode;
+            var p = document.querySelectorAll(".textbox p");
+            if (spacecontroller) {
+                if (keybordnumber == 32) {
+                    ans.name = jsonitem[20].Main;
+                    ans.round = 1;
+                    ans.data.push(Date.now());
+                    for (var i = 0; i < p.length; i++) {
+                        p[i].style.display = "none";
+                    };
+                    p[1].style.display = "block";
+                    p[1].innerHTML = "<h1>" + jsonitem[0].Main + "</h1>";
+                    spacecontroller = false;
+                    key = false;
+                } else {
+                    alert("請先按空白建!!!");
+                }
+            } else {
+                if (keybordnumber == jsonitem[questionitem].KeybordCode && key) {
+                    if (questionitem == 19) {
+                        key = false;
+                        ans.data.push(Date.now());
+                        questionitem += 1;
+                        fetch('../api/DataManager/BuildData', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                Name: ans.name,
+                                Round: ans.round,
+                                one: ans.data[0],
+                                two: ans.data[1],
+                                three: ans.data[2],
+                                four: ans.data[3],
+                                five: ans.data[4],
+                                six: ans.data[5],
+                                seven: ans.data[6],
+                                eight: ans.data[7],
+                                nine: ans.data[8],
+                                ten: ans.data[9],
+                                eleven: ans.data[10],
+                                twelve: ans.data[11],
+                                thirteen: ans.data[12],
+                                fourteen: ans.data[13],
+                                fifteen: ans.data[14],
+                                sixteen: ans.data[15],
+                                seventeen: ans.data[16],
+                                eighteen: ans.data[17],
+                                nineteen: ans.data[18],
+                                twenty: ans.data[19],
+                                twentyone: ans.data[20],
+                            })
+                        }).then(function () {
+                            document.getElementById('Changeview').click();
+                        });
+                    } else {
+                        key = false;
+                        ans.data.push(Date.now());
+                        questionitem += 1;
+                        p[1].innerHTML = "<h1>" + jsonitem[questionitem].Main + "</h1>";
+                    }
+                }
+                else {
+                    if (key) {
+                        alert("X");
+                    }
+                }
+            }
+        }
+
         function OK() {
             jsonitem = JSON.parse(json.responseText);
             KeybordSelect();
         }
-        function KeybordSelect() {
-            var keybordnumber = event.keyCode;
-            var p = document.querySelectorAll(".textbox p");
-            var dangerx = document.querySelectorAll(".textbox div");
-            var time = new Date();
-            if (spacecontroller && keybordnumber == 32) {
-                if (questionitem == 0 && spacecontroller) {
-                    ans.name = jsonitem[20].Main;
-                    ans.round = 1;
-                };
-                ans.data.push(time.getTime());
-                for (var i = 0; i < p.length; i++) {
-                    p[i].style.display = "none";
-                }
-                spacecontroller = false;
-                p[1].style.display = "block";
-                p[1].innerHTML = "<h1>" + jsonitem[questionitem].Main + "</h1>";
-            } else if (spacecontroller && keybordnumber != 32) {
-                alert("請先按空白建!!!");
-            } else if (keybordnumber == jsonitem[questionitem].KeybordCode && spacecontroller == false) {
-                ans.data.push(time.getTime());
-                if (questionitem == 19) {
-                    fetch('../api/DataManager/BuildData', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            Name: ans.name,
-                            Round: ans.round,
-                            one: ans.data[0],
-                            two: ans.data[1],
-                            three: ans.data[2],
-                            four: ans.data[3],
-                            five: ans.data[4],
-                            six: ans.data[5],
-                            seven: ans.data[6],
-                            eight: ans.data[7],
-                            nine: ans.data[8],
-                            ten: ans.data[9],
-                            eleven: ans.data[10],
-                            twelve: ans.data[11],
-                            thirteen: ans.data[12],
-                            fourteen: ans.data[13],
-                            fifteen: ans.data[14],
-                            sixteen: ans.data[15],
-                            seventeen: ans.data[16],
-                            eighteen: ans.data[17],
-                            nineteen: ans.data[18],
-                            twenty: ans.data[19],
-                            twentyone: ans.data[20],
-                        })
-                    }).then(function () {
-                        document.getElementById('Changeview').click();
-                    });
-                } else {
-                    questionitem += 1;
-                    p[1].innerHTML = "<h1>" + jsonitem[questionitem].Main + "</h1>";
-                }
-            } else if (keybordnumber != jsonitem[questionitem].KeybordCode && spacecontroller == false && questionitem > 0) {
-                alert("X");
-            }
-        }
+
         document.onkeydown = OK;
+        document.onkeyup = keyup;
     </script>
 }
 

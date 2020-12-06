@@ -314,6 +314,11 @@
     <Content Include="Views\TestPage\Home.cshtml" />
     <Content Include="Views\TestPage\FirstTest.cshtml" />
     <Content Include="Views\TestPage\SecondTest.cshtml" />
+    <Content Include="Views\TestPage\ThirdTest.cshtml" />
+    <Content Include="Views\TestPage\FourthTest.cshtml" />
+    <Content Include="Views\TestPage\FifthTest.cshtml" />
+    <Content Include="Views\TestPage\SixFifthTest.cshtml" />
+    <Content Include="Views\TestPage\SeventhTest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
