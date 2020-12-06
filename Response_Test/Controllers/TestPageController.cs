@@ -24,7 +24,7 @@ namespace Response_Test.Controllers
                 TesterBuildRepository build = new TesterBuildRepository();
                 build.BuildTester(tester);
             }
-            return RedirectToAction("FirstTest", "TestPage");
+            return View("TestPage");
         }
 
         public ActionResult FirstTest()
